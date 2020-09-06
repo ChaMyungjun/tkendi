@@ -1,0 +1,12 @@
+#node_modules
+node_modules
+
+#DiscordBot Token
+config.json
+
+#serviceKey
+.env
+config.ts
+config.js
+
+.js

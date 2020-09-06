@@ -1,0 +1,88 @@
+import axios from 'axios';
+
+const date = new Date();
+date.setHours(date.getHours() - 1);
+
+let startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
+  -2,
+)}${('0' + date.getDate()).slice(-2)}`;
+
+let endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
+  '0' + date.getDate()
+).slice(-2)}`;
+
+if (date.getHours() < 12) {
+  startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
+    '0' +
+    (date.getDate() - 1)
+  ).slice(-2)}`;
+  endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
+    '0' +
+    (date.getDate() - 1)
+  ).slice(-2)}`;
+}
+
+const k_url = `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=${process.env.serviceKey}&pageNo=1&numOfRows=10&startCreateDt=${startDt}&endCreateDt=${endDt}&_type=json`;
+const today_url = `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=${process.env.serviceKey}&pageNo=1&numOfRows=10&startCreateDt=${startDt}&endCreateDt=${endDt}&_type=json`;
+const w_url = `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19NatInfStateJson?serviceKey=${process.env.serviceKey}&pageNo=1&numOfRows=10&startCreateDt=${startDt}&endCreateDt=${endDt}&_type=json`;
+
+export const korea = async () => {
+  const data = await axios.get(k_url);
+  const items = data.data.response.body.items.item;
+  const info = {
+    numbers: {
+      DPN: 0,
+      Death: 0,
+      IPN: 0,
+    },
+    Date: '',
+  };
+
+  info.numbers.DPN = items.decideCnt;
+  info.numbers.Death = items.deathCnt;
+  info.numbers.IPN = items.careCnt;
+  info.Date = items.createDt;
+
+  return info;
+};
+
+export const today = async () => {
+  const data = await axios.get(today_url);
+
+  const items = data.data.response.body.items.item;
+  const info = {
+    numbers: {
+      DPN: 0,
+      Local: 0,
+      Rate: 0,
+    },
+    Date: '',
+    k_city: [],
+  };
+
+  info.numbers.DPN = items[18].incDec;
+  info.numbers.Rate = items[18].qurRate;
+  info.numbers.Local = items[18].localOccCnt;
+  info.Date = items[18].stdDay;
+
+  return info;
+};
+
+export const k_city = async () => {
+  const data = await axios.get(today_url);
+  const items = data.data.response.body.items.item;
+
+  const info = {
+    k_city: [],
+    cn_name: [],
+    en_name: [],
+  };
+
+  for (const keys in items) {
+    (<any>info.k_city)[keys] = (<any>items)[keys].gubun;
+    (<any>info.cn_name)[keys] = (<any>items)[keys].gubunCn;
+    (<any>info.en_name)[keys] = (<any>items)[keys].gubunEn;
+  }
+
+  return info;
+};
