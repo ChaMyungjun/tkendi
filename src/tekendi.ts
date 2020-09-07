@@ -7,7 +7,7 @@ const index = async (msg: any, client: any) => {
   if (msg.channel.type === 'dm') return;
   if (!msg.content.startsWith(prefix)) return;
 
-  if (msg.content === `${prefix}ping`) {
+  if (msg.content.starsWith === 'ping') {
     await ping(msg, client, embed(msg));
   } else if (msg.content === `${prefix}korea`) {
     await k_number(msg, client, embed(msg));
@@ -15,13 +15,6 @@ const index = async (msg: any, client: any) => {
     await t_number(msg, client, embed(msg));
   } else if (msg.content === `${prefix}local`) {
     await k_local(msg, client, embed(msg));
-    console.log(msg)
-    if ((msg.content).indexOf(prefix) != -1) {
-      console.log('return');
-    } else {
-      const number = msg.content.slice();
-      console.log(number);
-    }
   }
 };
 
