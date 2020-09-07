@@ -57,14 +57,12 @@ export const today = async () => {
       Rate: 0,
     },
     Date: '',
-    k_city: [],
   };
 
   info.numbers.DPN = items[18].incDec;
   info.numbers.Rate = items[18].qurRate;
   info.numbers.Local = items[18].localOccCnt;
   info.Date = items[18].stdDay;
-
   return info;
 };
 
@@ -76,12 +74,19 @@ export const k_city = async () => {
     k_city: [],
     cn_name: [],
     en_name: [],
+    numbers: {
+      DPN: [],
+    },
+    Date: [],
   };
 
   for (const keys in items) {
     (<any>info.k_city)[keys] = (<any>items)[keys].gubun;
     (<any>info.cn_name)[keys] = (<any>items)[keys].gubunCn;
     (<any>info.en_name)[keys] = (<any>items)[keys].gubunEn;
+    (<any>info.numbers.DPN)[keys] = items[keys].incDec;
+    (<any>info.Date)[keys] = items[keys].stdDay;
+
   }
 
   return info;
