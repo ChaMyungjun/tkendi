@@ -4,6 +4,8 @@ const k_local = async (msg: any, client: any, embed: any) => {
   const data = await k_city();
   const setData = data.k_city;
   const field = embed;
+
+  field.addField('Create Date', data.Date[1], true);
   for (const key in setData) {
     field.setTitle('국내 광역지방자치단체').addFields({
       name: `${Number(key) + 1}. ${setData[key]}`,

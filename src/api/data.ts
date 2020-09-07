@@ -86,7 +86,6 @@ export const k_city = async () => {
     (<any>info.en_name)[keys] = (<any>items)[keys].gubunEn;
     (<any>info.numbers.DPN)[keys] = items[keys].incDec;
     (<any>info.Date)[keys] = items[keys].stdDay;
-
   }
 
   return info;
