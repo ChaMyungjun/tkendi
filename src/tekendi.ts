@@ -7,7 +7,7 @@ const index = async (msg: any, client: any) => {
   if (msg.channel.type === 'dm') return;
   if (!msg.content.startsWith(prefix)) return;
 
-  if (msg.content.starsWith === 'ping') {
+  if (msg.content === `${prefix}ping`) {
     await ping(msg, client, embed(msg));
   } else if (msg.content === `${prefix}korea`) {
     await k_number(msg, client, embed(msg));
