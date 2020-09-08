@@ -12,7 +12,12 @@ const k_local = async (msg: any, client: any, embed: any) => {
       value: `확진자: ${data.numbers.DPN[key]} \n`,
     });
   }
-  msg.channel.send(field);
+  msg.channel.send(field).then((reply: any) => {
+    reply.awaitReactions(null, { max: 1, time: 60000, errors: ['time'] })
+          .then(async (collected: any) => {
+            console.log(collected)
+          })
+  })
 };
 
 export default k_local;
