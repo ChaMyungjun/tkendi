@@ -15,7 +15,7 @@ client.on('guildCreate', guild => {
 client.on('ready', () => {
   console.log(`Bot is started, with ${client.user?.username}`)
 })
-
+  
 client.on('warn', (info) => {
   console.log(info)
 })

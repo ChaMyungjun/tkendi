@@ -16,5 +16,3 @@ const k_local = async (msg: any, client: any, embed: any) => {
 };
 
 export default k_local;
-
-// ${data.cn_name[key]} \n ${data.en_name[key]} \n 

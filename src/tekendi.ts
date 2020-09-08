@@ -1,4 +1,4 @@
-import { k_number, ping, t_number, k_local } from './container';
+import { k_number, ping, t_number, k_local, help } from './container';
 import { embed } from './discord_util';
 
 const prefix = '!';
@@ -15,6 +15,8 @@ const index = async (msg: any, client: any) => {
     await t_number(msg, client, embed(msg));
   } else if (msg.content === `${prefix}local`) {
     await k_local(msg, client, embed(msg));
+  } else if (msg.content === `${prefix}help`) {
+    await help(msg, client, embed(msg));
   }
 };
 
