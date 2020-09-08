@@ -1,7 +1,7 @@
-import { k_number, ping, t_number, k_local, help } from './container';
+import { k_number, ping, t_number, k_local, help, test } from './container';
 import { embed } from './discord_util';
 
-const prefix = `@ㅐ미야`;
+const prefix = `!`;
 
 const index = async (msg: any, client: any) => {
   if (msg.channel.type === 'dm') return;
@@ -17,6 +17,8 @@ const index = async (msg: any, client: any) => {
     await k_local(msg, client, embed(msg));
   } else if (msg.content.includes('help')) {
     await help(msg, client, embed(msg));
+  } else if (msg.content.includes('test')) {
+    await test(msg, client, embed(msg));
   }
 };
 
