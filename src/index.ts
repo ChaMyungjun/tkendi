@@ -1,4 +1,3 @@
-require('dotenv').config()
 import Discord, { Client } from 'discord.js';
 import tkendi from './tekendi'
 import { embed } from './discord_util';
