@@ -15,7 +15,7 @@ const k_local = async (msg: any, client: any, embed: any) => {
   msg.channel.send(field).then(() => {
     msg.channel.awaitMessages(null, {max: 1, time: 3000, errors: ['tiem']})
     .then((collected: any) => {
-      msg.channel.send(`${collected.first().author} got the correct answer`)
+      console.log(collected[0])
     })
     .catch((error: any) => {
       msg.channel.send(`Error!: ${error}`)
