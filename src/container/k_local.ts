@@ -17,7 +17,7 @@ const k_local = async (msg: any, client: any, embed: any) => {
     msg.channel.awaitMessages(null, {max: 1, time: 60000, errors: ['tiem']})
     .then((collected: any) => {
       // msg.channel.sned(`${collected.first()}`)
-      console.log(collected.first())
+      console.log(collected)
     })
     .catch((error: any) => {
       msg.channel.send(`Error!! 값을 이력하지 않았습니다`)
