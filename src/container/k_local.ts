@@ -5,6 +5,10 @@ const k_local = async (msg: any, client: any, embed: any) => {
   const setData = data.k_city;
   const field = embed;
 
+  const filter = ((res: any) => {
+    return console.log(res.content)
+  })
+
   field.addField('Create Date', data.Date[18]);
   for (const key in setData) {
     field.setTitle('국내 광역지방자치단체').addFields({
@@ -14,16 +18,15 @@ const k_local = async (msg: any, client: any, embed: any) => {
   }
 
   msg.channel.send(field).then(() => {
-    msg.channel.awaitMessages(null, {max: 1, time: 60000, errors: ['tiem']})
-    .then((collected: any) => {
-      // msg.channel.sned(`${collected.first()}`)
-      console.log(collected)
-    })
-    .catch((error: any) => {
-      msg.channel.send(`Error!! 값을 이력하지 않았습니다`)
-      console.log(error)
-    })
-  })
+    msg.channel
+      .awaitMessages(filter, { max: 1, time: 6000, error: ['time'] })
+      .then((collected: any) => {
+        msg.channel.send(`${collected}`);
+      })
+      .catch((error: any) => {
+        msg.channel.send('Erorr!');
+      });
+  });
 };
 
 export default k_local;
