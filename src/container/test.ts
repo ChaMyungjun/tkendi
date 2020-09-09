@@ -9,16 +9,14 @@ const filter = (response: any) => {
 };
 
 const test = async (msg: any, client: any, embed: any) => {
-  msg.channel.send(item.question).then(() => {
-    msg.channel
-      .awaitMessages(filter, { max: 1, time: 3000, errors: ['time'] })
-      .then((collected: any) => {
-        msg.channel.send(`${collected.first().author} got the correct answer`);
-      })
-      .catch((collected: any) => {
-        msg.channel.send('Looks like nobody got the answer this tiem');
-      });
-  });
+  msg.channel
+    .awaitMessages(filter, { max: 1, time: 3000, errors: ['time'] })
+    .then((collected: any) => {
+      msg.channel.send(`${collected.first().author} got the correct answer!`);
+    })
+    .catch((collected: any) => {
+      msg.channel.send('Looks like nobody got the answer this time.');
+    });
 };
 
 export default test;

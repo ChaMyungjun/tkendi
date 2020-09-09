@@ -12,13 +12,16 @@ const k_local = async (msg: any, client: any, embed: any) => {
       value: `확진자: ${data.numbers.DPN[key]} \n`,
     });
   }
+
   msg.channel.send(field).then(() => {
-    msg.channel.awaitMessages(null, {max: 1, time: 3000, errors: ['tiem']})
+    msg.channel.awaitMessages(null, {max: 1, time: 60000, errors: ['tiem']})
     .then((collected: any) => {
-      console.log(collected[0])
+      // msg.channel.sned(`${collected.first()}`)
+      console.log(collected.first())
     })
     .catch((error: any) => {
-      msg.channel.send(`Error!: ${error}`)
+      msg.channel.send(`Error!! 값을 이력하지 않았습니다`)
+      console.log(error)
     })
   })
 };
