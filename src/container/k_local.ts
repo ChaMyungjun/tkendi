@@ -1,40 +1,33 @@
 import { k_city } from '../api/data';
 
-const k_local = async (msg: any, client: any, embed: any) => {
+const k_local = async (msg: any, embed: any, client: any) => {
   const data = await k_city();
   const setData = data.k_city;
+  console.log(data);
   const field = embed;
 
   const filter = (res: any) => {
     let k_data = null;
-    console.log(res.content)
-    for (const key in setData) {
+    console.log(res.content);
+    for (const key in data.k_city) {
       if ((<any>setData)[key] === res.content) {
         field
           .setTitle('국내 광역지방자치 단체')
-          .addFields(`${res.content}`, `${(<any>data.numbers.DPN)[key]}`);
+          .addFields(
+            { name: '기준일시', value: `${data.Date[key]}` },
+            {
+              name: `${res.content}`,
+              value: `오늘 확진자:${data.numbers.DPN[key]}명`,
+            },
+          );
 
         k_data = (<any>data.numbers.DPN)[key];
-      } else {
-        k_data = null
-        msg.reply('다시 입력하라고!')
       }
     }
 
     msg.channel.send(field);
-    return k_data;
+    return res.content;
   };
-
-  // field.addField('Create Date', data.Date[0]);
-
-  // const k_city_picker = msg.channel.send('국내 광역지방자치 단체를 입력해줘!')
-
-  // for (const key in setData) {
-  //   field.setTitle('국내 광역지방자치단체').addFields({
-  //     name: `${Number(key) + 1}. ${setData[key]}`,
-  //     value: `확진자: ${data.numbers.DPN[key]} \n`,
-  //   });
-  // }
 
   msg.channel.send('국내 광역지방자치 단체를 입력해줘').then(() => {
     msg.channel
