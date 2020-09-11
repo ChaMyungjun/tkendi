@@ -1,6 +1,6 @@
 import { k_city } from '../api/data';
 
-const k_local = async (msg: any, embed: any, client: any) => {
+const k_local = async (msg: any, client: any, embed: any) => {
   const data = await k_city();
   const setData = data.k_city;
   console.log(data);
@@ -11,20 +11,16 @@ const k_local = async (msg: any, embed: any, client: any) => {
     console.log(res.content);
     for (const key in data.k_city) {
       if ((<any>setData)[key] === res.content) {
-        field
-          .setTitle('국내 광역지방자치 단체')
-          .addFields(
-            { name: '기준일시', value: `${data.Date[key]}` },
-            {
-              name: `${res.content}`,
-              value: `오늘 확진자:${data.numbers.DPN[key]}명`,
-            },
-          );
-
+        field.setTitle('국내 광역지방자치 단체').addFields(
+          { name: '기준일시', value: `${data.Date[key]}` },
+          {
+            name: `${res.content}`,
+            value: `오늘 확진자:${data.numbers.DPN[key]}명`,
+          },
+        );
         k_data = (<any>data.numbers.DPN)[key];
       }
     }
-
     msg.channel.send(field);
     return res.content;
   };
@@ -33,8 +29,6 @@ const k_local = async (msg: any, embed: any, client: any) => {
     msg.channel
       .awaitMessages(filter, { max: 1, time: 6000, error: ['time'] })
       .then((collected: any) => {
-        console.log(collected);
-      })
       .catch((error: any) => {
         msg.reply('Time out!');
       });
