@@ -1,4 +1,3 @@
-require('dotenv').config()
 import Discord, { Client } from 'discord.js';
 import tkendi from './tekendi'
 import { embed } from './discord_util';
@@ -15,7 +14,7 @@ client.on('guildCreate', guild => {
 client.on('ready', () => {
   console.log(`Bot is started, with ${client.user?.username}`)
 })
-
+  
 client.on('warn', (info) => {
   console.log(info)
 })

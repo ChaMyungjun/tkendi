@@ -11,7 +11,7 @@ let endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
   '0' + date.getDate()
 ).slice(-2)}`;
 
-if (date.getHours() < 12) {
+if (date.getHours() < 10) {
   startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
     '0' +
     (date.getDate() - 1)
@@ -86,7 +86,6 @@ export const k_city = async () => {
     (<any>info.en_name)[keys] = (<any>items)[keys].gubunEn;
     (<any>info.numbers.DPN)[keys] = items[keys].incDec;
     (<any>info.Date)[keys] = items[keys].stdDay;
-
   }
 
   return info;
