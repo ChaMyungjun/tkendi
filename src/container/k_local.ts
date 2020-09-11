@@ -28,7 +28,6 @@ const k_local = async (msg: any, client: any, embed: any) => {
   msg.channel.send('국내 광역지방자치 단체를 입력해줘').then(() => {
     msg.channel
       .awaitMessages(filter, { max: 1, time: 6000, error: ['time'] })
-      .then((collected: any) => {
       .catch((error: any) => {
         msg.reply('Time out!');
       });
