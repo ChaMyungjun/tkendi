@@ -6,14 +6,23 @@ const k_local = async (msg: any, client: any, embed: any) => {
   const field = embed;
 
   const filter = (res: any) => {
-    console.log(res.content);
-    const k_data = null 
-    for(const key in data) {
-      if((<any>data.k_city)[key] === res.content) {
-        field.setTitle('국내 광역지방자치 단체') .addFields(`${res.content}`, `${(<any>data.numbers.DPN)[key]}`)
+    let k_data = null;
+    console.log(res.content)
+    for (const key in setData) {
+      if ((<any>setData)[key] === res.content) {
+        field
+          .setTitle('국내 광역지방자치 단체')
+          .addFields(`${res.content}`, `${(<any>data.numbers.DPN)[key]}`);
+
+        k_data = (<any>data.numbers.DPN)[key];
+      } else {
+        k_data = null
+        msg.reply('다시 입력하라고!')
       }
     }
-    return res.content;
+
+    msg.channel.send(field);
+    return k_data;
   };
 
   // field.addField('Create Date', data.Date[0]);
@@ -23,7 +32,7 @@ const k_local = async (msg: any, client: any, embed: any) => {
   // for (const key in setData) {
   //   field.setTitle('국내 광역지방자치단체').addFields({
   //     name: `${Number(key) + 1}. ${setData[key]}`,
-  //     value: `확진자: ${data.numbers.DsPN[key]} \n`,
+  //     value: `확진자: ${data.numbers.DPN[key]} \n`,
   //   });
   // }
 
@@ -31,10 +40,7 @@ const k_local = async (msg: any, client: any, embed: any) => {
     msg.channel
       .awaitMessages(filter, { max: 1, time: 6000, error: ['time'] })
       .then((collected: any) => {
-        console.log(collected.content)
-        collected.map((res:any) => {
-          msg.channel.send(`${res.content}`)
-        })
+        console.log(collected);
       })
       .catch((error: any) => {
         msg.reply('Time out!');
