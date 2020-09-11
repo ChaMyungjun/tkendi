@@ -7,6 +7,12 @@ const k_local = async (msg: any, client: any, embed: any) => {
 
   const filter = (res: any) => {
     console.log(res.content);
+    const k_data = null 
+    for(const key in data) {
+      if((<any>data.k_city)[key] === res.content) {
+        field.setTitle('국내 광역지방자치 단체') .addFields(`${res.content}`, `${(<any>data.numbers.DPN)[key]}`)
+      }
+    }
     return res.content;
   };
 
@@ -17,7 +23,7 @@ const k_local = async (msg: any, client: any, embed: any) => {
   // for (const key in setData) {
   //   field.setTitle('국내 광역지방자치단체').addFields({
   //     name: `${Number(key) + 1}. ${setData[key]}`,
-  //     value: `확진자: ${data.numbers.DPN[key]} \n`,
+  //     value: `확진자: ${data.numbers.DsPN[key]} \n`,
   //   });
   // }
 
@@ -26,7 +32,9 @@ const k_local = async (msg: any, client: any, embed: any) => {
       .awaitMessages(filter, { max: 1, time: 6000, error: ['time'] })
       .then((collected: any) => {
         console.log(collected.content)
-        msg.channel.send(`${collected}`);
+        collected.map((res:any) => {
+          msg.channel.send(`${res.content}`)
+        })
       })
       .catch((error: any) => {
         msg.reply('Time out!');
