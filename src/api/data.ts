@@ -1,32 +1,31 @@
 import axios from 'axios';
 
-const date = new Date();
-date.setHours(date.getHours() - 1);
-
-let startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
-  -2,
-)}${('0' + date.getDate()).slice(-2)}`;
-
-let endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
-  '0' + date.getDate()
-).slice(-2)}`;
-
-if (date.getHours() < 10) {
-  startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
-    '0' +
-    (date.getDate() - 1)
-  ).slice(-2)}`;
-  endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
-    '0' +
-    (date.getDate() - 1)
-  ).slice(-2)}`;
-}
-
-const k_url = `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=${process.env.serviceKey}&pageNo=1&numOfRows=10&startCreateDt=${startDt}&endCreateDt=${endDt}&_type=json`;
-const today_url = `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=${process.env.serviceKey}&pageNo=1&numOfRows=10&startCreateDt=${startDt}&endCreateDt=${endDt}&_type=json`;
 const w_url = `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19NatInfStateJson?serviceKey=${process.env.serviceKey}&pageNo=1&numOfRows=10&startCreateDt=${startDt}&endCreateDt=${endDt}&_type=json`;
 
 export const korea = async () => {
+  const date = new Date();
+  date.setHours(date.getHours() - 1);
+
+  let startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
+    -2,
+  )}${('0' + date.getDate()).slice(-2)}`;
+
+  let endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
+    -2,
+  )}${('0' + date.getDate()).slice(-2)}`;
+
+  if (date.getHours() < 10) {
+    startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
+      -2,
+    )}${('0' + (date.getDate() - 1)).slice(-2)}`;
+    endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
+      '0' +
+      (date.getDate() - 1)
+    ).slice(-2)}`;
+  }
+
+  const k_url = `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=${process.env.serviceKey}&pageNo=1&numOfRows=10&startCreateDt=${startDt}&endCreateDt=${endDt}&_type=json`;
+
   const data = await axios.get(k_url);
   const items = data.data.response.body.items.item;
   const info = {
@@ -47,6 +46,29 @@ export const korea = async () => {
 };
 
 export const today = async () => {
+  const date = new Date();
+  date.setHours(date.getHours() - 1);
+
+  let startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
+    -2,
+  )}${('0' + date.getDate()).slice(-2)}`;
+
+  let endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
+    -2,
+  )}${('0' + date.getDate()).slice(-2)}`;
+
+  if (date.getHours() < 10) {
+    startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
+      -2,
+    )}${('0' + (date.getDate() - 1)).slice(-2)}`;
+    endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
+      '0' +
+      (date.getDate() - 1)
+    ).slice(-2)}`;
+  }
+
+  const today_url = `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=${process.env.serviceKey}&pageNo=1&numOfRows=10&startCreateDt=${startDt}&endCreateDt=${endDt}&_type=json`;
+
   const data = await axios.get(today_url);
 
   const items = data.data.response.body.items.item;
@@ -67,6 +89,29 @@ export const today = async () => {
 };
 
 export const k_city = async () => {
+  const date = new Date();
+  date.setHours(date.getHours() - 1);
+
+  let startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
+    -2,
+  )}${('0' + date.getDate()).slice(-2)}`;
+
+  let endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
+    -2,
+  )}${('0' + date.getDate()).slice(-2)}`;
+
+  if (date.getHours() < 10) {
+    startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
+      -2,
+    )}${('0' + (date.getDate() - 1)).slice(-2)}`;
+    endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
+      '0' +
+      (date.getDate() - 1)
+    ).slice(-2)}`;
+  }
+
+  const today_url = `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=${process.env.serviceKey}&pageNo=1&numOfRows=10&startCreateDt=${startDt}&endCreateDt=${endDt}&_type=json`;
+
   const data = await axios.get(today_url);
   const items = data.data.response.body.items.item;
 
