@@ -17,8 +17,6 @@ const index = async (msg: any, client: any) => {
     await k_local(msg, client, embed(msg));
   } else if (msg.content.includes('help')) {
     await help(msg, client, embed(msg));
-  } else if (msg.content.includes('test')) {
-    await test(msg, client, embed(msg));
   }
 };
 
