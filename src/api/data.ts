@@ -14,15 +14,15 @@ export const korea = async () => {
     -2,
   )}${('0' + date.getDate()).slice(-2)}`;
 
-  // if (date.getHours() < 10) {
-  //   startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
-  //     -2,
-  //   )}${('0' + (date.getDate() - 1)).slice(-2)}`;
-  //   endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
-  //     '0' +
-  //     (date.getDate() - 1)
-  //   ).slice(-2)}`;
-  // }
+  if (date.getHours() < 10) {
+    startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
+      -2,
+    )}${('0' + (date.getDate() - 1)).slice(-2)}`;
+    endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
+      '0' +
+      (date.getDate() - 1)
+    ).slice(-2)}`;
+  }
 
   const k_url = `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=${process.env.serviceKey}&pageNo=1&numOfRows=10&startCreateDt=${startDt}&endCreateDt=${endDt}&_type=json`;
 
@@ -57,15 +57,15 @@ export const today = async () => {
     -2,
   )}${('0' + date.getDate()).slice(-2)}`;
 
-  // if (date.getHours() < 10) {
-  //   startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
-  //     -2,
-  //   )}${('0' + (date.getDate() - 1)).slice(-2)}`;
-  //   endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
-  //     '0' +
-  //     (date.getDate() - 1)
-  //   ).slice(-2)}`;
-  // }
+  if (date.getHours() < 10) {
+    startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
+      -2,
+    )}${('0' + (date.getDate() - 1)).slice(-2)}`;
+    endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
+      '0' +
+      (date.getDate() - 1)
+    ).slice(-2)}`;
+  }
 
   const today_url = `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=${process.env.serviceKey}&pageNo=1&numOfRows=10&startCreateDt=${startDt}&endCreateDt=${endDt}&_type=json`;
 
@@ -100,15 +100,15 @@ export const k_city = async () => {
     -2,
   )}${('0' + date.getDate()).slice(-2)}`;
 
-  // if (date.getHours() < 10) {
-  //   startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
-  //     -2,
-  //   )}${('0' + (date.getDate() - 1)).slice(-2)}`;
-  //   endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
-  //     '0' +
-  //     (date.getDate() - 1)
-  //   ).slice(-2)}`;
-  // }
+  if (date.getHours() < 10) {
+    startDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(
+      -2,
+    )}${('0' + (date.getDate() - 1)).slice(-2)}`;
+    endDt = `${date.getFullYear()}${('0' + (date.getMonth() + 1)).slice(-2)}${(
+      '0' +
+      (date.getDate() - 1)
+    ).slice(-2)}`;
+  }
 
   const today_url = `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=${process.env.serviceKey}&pageNo=1&numOfRows=10&startCreateDt=${startDt}&endCreateDt=${endDt}&_type=json`;
 
