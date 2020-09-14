@@ -1,4 +1,4 @@
-import { k_number, ping, t_number, k_local, help, test } from './container';
+import { k_number, ping, t_number, k_local, help } from './container';
 import { embed } from './discord_util';
 
 const prefix = `!`;
