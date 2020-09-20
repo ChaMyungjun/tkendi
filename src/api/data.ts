@@ -177,7 +177,7 @@ export const w_city = async () => {
     (<any>info.w_city)[keys] = (<any>items)[keys].nationNm;
     (<any>info.cn_name)[keys] = (<any>items)[keys].nationNmCn;
     (<any>info.en_name)[keys] = (<any>items)[keys].nationNmEn;
-    (<any>info.numbers.DPN)[keys] = items[keys].incDec;
+    (<any>info.numbers.DPN)[keys] = items[keys].natDefCnt;
     (<any>info.Date)[keys] = items[keys].stdDay;
   }
 
