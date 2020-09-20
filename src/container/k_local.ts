@@ -19,8 +19,9 @@ const k_local = async (msg: any, client: any, embed: any) => {
           },
         );
         k_data = (<any>data.numbers.DPN)[key];
+        console.log(k_data);
       }
-    } 
+    }
     msg.channel.send(field);
     return res.content;
   };
