@@ -24,7 +24,7 @@ export const korea = async () => {
     ).slice(-2)}`;
   }
 
-  const k_url = `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=${process.env.serviceKey}&pageNo=1&numOfRows=10&startCreateDt=${startDt}&endCreateDt=${endDt}&_type=json`;
+  const k_url = `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=${process.env.serviceKey}&pageNo=1&numOfRows=10&startCreateDt=${startDt}&endCreateDt=${endDt}&  =json`;
 
   const data = await axios.get(k_url);
   const items = data.data.response.body.items.item;
