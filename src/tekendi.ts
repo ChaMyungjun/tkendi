@@ -17,24 +17,18 @@ const index = async (msg: any, client: any) => {
   if (msg.channel.type === 'dm') return;
   if (!msg.content.startsWith(prefix)) return;
 
-  // if (msg.content.includes('ping')) {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-  //   await ping(msg, client, embed(msg));
-  // } else if (msg.content.includes('korea')) {
-  //   await k_number(msg, client, embed(msg));
-  // } else if (msg.content.includes('today')) {
-  //   await t_number(msg, client, embed(msg));
-  // } else if (msg.content.includes('k_local')) {
-  //   await k_local(msg, client, embed(msg));
-  // } else if (msg.content.includes('help')) {
-  //   await help(msg, client, embed(msg));
-  // } else if (msg.content.includes('w_local')) {
-  //   await w_local(msg, client, embed(msg));
-  // }
-
-  for (const keys in Command) {
-    if(msg.content == Command[keys]) {
-      await Command[keys](msg, client, embed(msg))
-    }
+  if (msg.content.includes('ping')) {
+    await ping(msg, client, embed(msg));
+  } else if (msg.content.includes('korea')) {
+    await k_number(msg, client, embed(msg));
+  } else if (msg.content.includes('today')) {
+    await t_number(msg, client, embed(msg));
+  } else if (msg.content.includes('k_local')) {
+    await k_local(msg, client, embed(msg));
+  } else if (msg.content.includes('help')) {
+    await help(msg, client, embed(msg));
+  } else if (msg.content.includes('w_local')) {
+    await w_local(msg, client, embed(msg));
   }
 };
 
