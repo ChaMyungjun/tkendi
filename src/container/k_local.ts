@@ -23,7 +23,7 @@ const k_local = async (msg: any, client: any, embed: any) => {
       }
     }
     msg.channel.send(field);
-    return res.content;
+    return res.content; 
   };
 
   msg.channel.send('국내 광역지방자치 단체를 입력해줘').then(() => {
